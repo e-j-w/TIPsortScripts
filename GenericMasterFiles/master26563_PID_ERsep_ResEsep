@@ -1,0 +1,6 @@
+This is a master file for sort_TRIUMF
+The structure of this file is important, changes will alter sort results
+input_data         PID_ERSep/0p2a/run26563_PID_ERsep.sfu
+TIGRESS_calibration_parameters       ../ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters       ../ParFiles/CSIARRAY_par.dat
+output_data                       CsIArray_ResESep/0p2a/run26563_ResEsep.sfu

@@ -1,0 +1,8 @@
+This is a ring gate file for TIGRESS cores.
+ring  low     high   
+ 1    0    0             
+ 2    0    0
+ 3    1398    1556
+ 4    1389    1561
+ 5    1382    1545
+ 6    1386    1538

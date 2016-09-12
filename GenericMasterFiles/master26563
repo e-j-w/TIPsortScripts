@@ -1,0 +1,7 @@
+This is a master file for sort_TRIUMF
+The structure of this file is important, changes will alter sort results
+input_data         /media/jono/TIP_Disk31/2013/sfu/run26563.sfu
+TIGRESS_calibration_parameters       /media/jono/TIP_Disk31/2013/ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters       /media/jono/TIP_Disk31/2013/ParFiles/CSIARRAY_par.dat
+root_output_file                     run26563.root
+output_data                          run26563_sorted.sfu

@@ -1,0 +1,8 @@
+This is a master file for sort_TRIUMF
+The structure of this file is important, changes will alter sort results
+input_data         TigressCsIArrayTTCalSep/run26563_TigressCsIArrayTTCalsep.sfu
+TIGRESS_calibration_parameters    ../ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters   ../ParFiles/CSIARRAY_par.dat
+root_gate_file                    48MeVgates.root
+gate_name_file                    ../ParFiles/gateNames.dat
+output_data                       PID_ERSep/run26563_PID_ERsep.sfu

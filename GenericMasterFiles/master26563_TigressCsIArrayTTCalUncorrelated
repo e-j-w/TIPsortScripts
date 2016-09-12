@@ -1,0 +1,7 @@
+This is a master file for sort_TRIUMF
+The structure of this file is important, changes will alter sort results
+input_data         Uncorrelated/run26563high.sfu
+TIGRESS_calibration_parameters       ../ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters       ../ParFiles/CSIARRAY_par.dat
+root_output_file                     Uncorrelated/TTCal/run26563_high_TigressCsIArrayTTCalUncorrelated.root
+output_data                          Uncorrelated/TTCal/run26563_TigressCsIArrayTTCalUncorrelated.sfu
