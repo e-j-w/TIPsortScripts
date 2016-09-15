@@ -94,6 +94,23 @@ for ((i=0; i<$SUBRUNS; i++)); do
   echo "--------------------------------------------------------"
   echo ""
   fi
+  
+  
+  if [ ! -f CsIArray_PID_ER/run"$RUNSR"_CsIArray_PID_ER.root ]; then
+  echo ""
+  echo "------------------------------------------"
+  echo "Generating CsI PID histogram..."
+  echo "------------------------------------------"
+  echo ""
+  ./process_CsIArray_PID_ER.bash $RUNSR
+  else
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "CsI PID histogram already exists, skipping..."
+  echo "--------------------------------------------------------"
+  echo ""
+  fi
+  
 
   echo ""
   echo "------------------------------------------------------"

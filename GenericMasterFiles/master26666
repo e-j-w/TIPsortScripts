@@ -1,0 +1,7 @@
+This is a master file for sort_TRIUMF
+The structure of this file is important, changes will alter sort results
+input_data         sfu/run26666.sfu
+TIGRESS_calibration_parameters       ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters      ParFiles/CSIARRAY_par.dat
+root_output_file                     run26666.root
+output_data                          run26666_sorted.sfu

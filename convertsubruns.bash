@@ -12,7 +12,7 @@ MIDAS_PATH=`dirname $0`/midas
 SFU_PATH=`dirname $0`/sfu
 
 #the path to the map being used
-MAP=`dirname $0`/maps/November2013.map
+MAP=`dirname $0`/maps/September2016.map
 
 for RUN in `seq $1 $2`;
 do
