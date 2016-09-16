@@ -1,14 +1,14 @@
 -------------------------------- --------------------------------------------------------------------
 This is a setup file for TIGRESS Coincidence Trigger Test sort (>>>>Timing from "fit" or "daq"<<<<)
 -------------------------------- --------------------------------------------------------------------
-TIGRESS_timing_from				fit
+TIGRESS_timing_from				daq
 -------------------------------- --------------------------------------------------------------------
 BGO_timing_from					fit
 -------------------------------- --------------------------------------------------------------------
 Energy_spectra_contraction_factor               0.5
 -------------------------------- --------------------------------------------------------------------
-Core_energy_calibration_parameters  ParFiles/TIGRESS_core_energyCo56.par
-#Core_energy_calibration_parameters  ParFiles/TIGRESS_core_energy.par
+#Core_energy_calibration_parameters  ParFiles/TIGRESS_core_energyCo56.par
+Core_energy_calibration_parameters  ParFiles/TIGRESS_core_energy.par
 -------------------------------- --------------------------------------------------------------------
 Time_spectra_contraction_factor                 1
 -------------------------------- --------------------------------------------------------------------

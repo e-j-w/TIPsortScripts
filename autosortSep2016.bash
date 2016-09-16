@@ -13,11 +13,16 @@ if [ ! -d sfu ]; then
 	mkdir sfu
 fi
 
+
 echo "------------------------------------------------"
 echo "Welcome to the fancy auto sort script which will" 
 echo "never fail, since it was engineered by an expert" 
 echo "grad student who  knows  differential equations."
 echo "------------------------------------------------"
+
+if [ ! "$1" == "ow" ]; then
+  echo "Re-run the script with argument 'ow' if you want to overwrite the files previously generated for a given run."
+fi
 
 echo "Enter the number of the run which you would like to sort: "
 read RUN
@@ -65,7 +70,7 @@ for ((i=0; i<$SUBRUNS; i++)); do
 
   echo ""
   echo "Generating histograms for run "$RUNSR"..."
-  if [ ! -f TigressBGO_TTHP/run"$RUNSR"_TigressBGO_TTHP.root ]; then
+  if [ ! -f TigressBGO_TTHP/run"$RUNSR"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ]; then
   echo ""
   echo "-----------------------------------------------"
   echo "Generating Tigress/BGO hit pattern histogram..."
@@ -80,7 +85,7 @@ for ((i=0; i<$SUBRUNS; i++)); do
   echo ""
   fi
 
-  if [ ! -f TigressCsIArray_TTCal/run"$RUNSR"_TigressCsIArray_TTCal.root ]; then
+  if [ ! -f TigressCsIArray_TTCal/run"$RUNSR"_TigressCsIArray_TTCal.root ] || [ "$1" == "ow" ]; then
   echo ""
   echo "------------------------------------------"
   echo "Generating Tigress/CsI timing histogram..."
@@ -96,7 +101,7 @@ for ((i=0; i<$SUBRUNS; i++)); do
   fi
   
   
-  if [ ! -f CsIArray_PID_ER/run"$RUNSR"_CsIArray_PID_ER.root ]; then
+  if [ ! -f CsIArray_PID_ER/run"$RUNSR"_CsIArray_PID_ER.root ] || [ "$1" == "ow" ]; then
   echo ""
   echo "------------------------------------------"
   echo "Generating CsI PID histogram..."
@@ -107,6 +112,21 @@ for ((i=0; i<$SUBRUNS; i++)); do
   echo ""
   echo "--------------------------------------------------------"
   echo "CsI PID histogram already exists, skipping..."
+  echo "--------------------------------------------------------"
+  echo ""
+  fi
+  
+  if [ ! -f Tigress_ECalRing/run"$RUNSR"_Tigress_ECalRing.mca ] || [ "$1" == "ow" ]; then
+  echo ""
+  echo "------------------------------------------"
+  echo "Generating calibrated TIGRESS ring spectra..."
+  echo "------------------------------------------"
+  echo ""
+  ./process_Tigress_ECalRing.bash $RUNSR
+  else
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "Calibrated TIGRESS ring spectra already exist, skipping..."
   echo "--------------------------------------------------------"
   echo ""
   fi
@@ -125,5 +145,7 @@ for ((i=0; i<$SUBRUNS; i++)); do
   echo "Finished sorting run data and histograms for run "$RUNSR"."
   echo "Tigress/BGO hit pattern histogram available in: TigressBGO_TTHP/run"$RUNSR"_TigressBGO_TTHP.root"
   echo "Tigress/CsI timing histogram available in: TigressCsIArray_TTCal/run"$RUNSR"_TigressCsIArray_TTCal.root "
+  echo "CsI PID histogram available in: CsIArray_PID_ER/run"$RUNSR"_CsIArray_PID_ER.root"
+  echo "Calibrated TIGRESS ring spectra available in: Tigress_ECalRing/run"$RUNSR"_Tigress_ECalRing.mca"
   echo "----------------------------------------------------------------------------------------------------"
 done
