@@ -1,7 +1,7 @@
 This is a master file for sort_TRIUMF
 The structure of this file is important, changes will alter sort results
-input_data         CsIArrayTTCalSep/run26563_CsIArrayTTCalsep.sfu
-TIGRESS_calibration_parameters       ../ParFiles/TIGRESS_par.dat
-CSIARRAY_calibration_parameters       ../ParFiles/CSIARRAY_par.dat
-root_output_file                     TigressTTCalSep/run26563_TigressTTCalsep.root
-output_data                          TigressTTCalSep/run26563_TigressTTCalsep.sfu
+input_data         run26563_CsIArrayTTCalsep.sfu
+TIGRESS_calibration_parameters       ParFiles/TIGRESS_par.dat
+CSIARRAY_calibration_parameters      ParFiles/CSIARRAY_par.dat
+root_output_file                     run26563_TigressTTCalsep.root
+output_data                          run26563_TigressTTCalsep.sfu

@@ -9,9 +9,7 @@ TIGRESS    CHANNEL
 MIN        0	
 MAX        959
 FIT_GE     YES
-FIT_BGO    YES	
-#FIT_GE	   NO	
-#FIT_BGO   NO	
+FIT_BGO    YES
 KPAR       500
 DISP       4
 =======    ==========================================
