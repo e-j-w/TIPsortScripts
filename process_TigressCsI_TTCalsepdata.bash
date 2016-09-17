@@ -34,6 +34,8 @@ echo ""
 echo "Cleaning up..."
 rm -rf TBsep/
 rm -rf MasterFiles/
+rm run"$1"_CsIArrayTTCalsep.sfu
+rm run"$1"_TigressTTCalsep.sfu
 
 echo ""
 echo "Done making Tigress-CsI timing separated data: TigressCsIArray_TTCalsep/run"$1"_TigressCsIArrayTTCalsep.sfu"
