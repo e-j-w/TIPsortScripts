@@ -9,3 +9,6 @@ unused
 *~
 *~lock*
 *.list
+cluster.dat
+GRSIsort
+master

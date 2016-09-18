@@ -28,4 +28,4 @@ rm -rf TBsep/
 rm -rf MasterFiles/
 
 echo ""
-echo "Done making the Tigress/CsI timing ROOT file: TigressCsIArray_TTCal_fromsepdata/run"$1"_TigressCsIArray_TTCal_fromsepdata.root"
+echo "Done making the Tigress/CsI timing ROOT file from separated data: TigressCsIArray_TTCal_fromsepdata/run"$1"_TigressCsIArray_TTCal_fromsepdata.root"

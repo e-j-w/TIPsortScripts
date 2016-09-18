@@ -176,7 +176,51 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
+if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS ring addback spectra from separated data..."
+echo "------------------------------------------"
+echo ""
+./process_Tigress_ECalABRing_fromsepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS ring addback spectra from separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
 
+
+if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating PID separated data..."
+echo "------------------------------------------"
+echo ""
+./process_CsIArray_PID_ER_sepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "PID separated data already exists, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
+if [ ! -f Tigress_ECalABRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."
+echo "------------------------------------------"
+echo ""
+./process_Tigress_ECalABRing_fromPIDsepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS ring addback spectra from PID separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
 
 
 echo ""
@@ -195,4 +239,8 @@ echo "Tigress/CsI timing histogram available in: TigressCsIArray_TTCal/run"$RUN"
 echo "CsI PID histogram available in: CsIArray_PID_ER/run"$RUN"_CsIArray_PID_ER.root"
 echo "Calibrated TIGRESS ring spectra available in: Tigress_ECalRing/run"$RUN"_Tigress_ECalRing.mca"
 echo "Calibrated TIGRESS ring addback spectra available in: Tigress_ECalABRing/run"$RUN"_Tigress_ECalABRing.mca"
+echo ""
+echo "Time separated data available in: TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu"
+echo "Tigress/CsI timing histogram from separated data available in: TigressCsIArray_TTCal_fromsepdata/run"$RUN"_TigressCsIArray_TTCal_fromsepdata.root"
+echo "Calibrated TIGRESS ring addback spectra from separated data available in: Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca"
 echo "----------------------------------------------------------------------------------------------------"
