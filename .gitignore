@@ -9,6 +9,7 @@ unused
 *~
 *~lock*
 *.list
+*.mat
 cluster.dat
 GRSIsort
 master
