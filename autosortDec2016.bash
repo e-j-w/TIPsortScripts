@@ -3,7 +3,7 @@
 # A script for automatic online sorting.
 # This version covers the September 2016 S1232 run
 
-SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
+SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/"
 MAP="maps/December2016.map"
 
 #set stuff up
