@@ -1,6 +1,6 @@
 This is a master file for sort_TRIUMF
 The structure of this file is important, changes will alter sort results
-input_data         TBsep/run26563_TBsep.sfu
+input_data         sfu/run26563.sfu
 TIGRESS_calibration_parameters       ParFiles/TIGRESS_par.dat
 CSIARRAY_calibration_parameters      ParFiles/CSIARRAY_par.dat
 root_output_file                     Foldsep/run26563_TBGOHP.root

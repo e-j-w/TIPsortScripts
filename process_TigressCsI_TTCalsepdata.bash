@@ -17,23 +17,16 @@ sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_CsIArrayTTCalsep
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressTTCalsep
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCalsep
 
-
-#do separation on trigbit 69 (Tigress+CsI+RF)
-mkdir TBsep
-#separate_TrigBits sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu 69
-cp sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu
-
 #do separation
 mkdir TigressCsIArray_TTCalsep
 separate_CsIArray_TTCalDiff MasterFiles/master"$1"_CsIArrayTTCalsep
 separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 4560 4690
-separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 3550 3680
+separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 3580 3700
 
 #remove intermediate data files to save disk space and cleanup
 echo ""
 echo "Cleaning up..."
-rm -rf TBsep/
 rm -rf MasterFiles/
 rm run"$1"_CsIArrayTTCalsep.sfu
 rm run"$1"_TigressTTCalsep.sfu

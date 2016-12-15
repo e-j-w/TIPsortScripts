@@ -3,7 +3,7 @@
 # A script for automatic online sorting.
 # This version covers the September 2016 S1232 run
 
-SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/"
+SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/"
 MAP="maps/December2016.map"
 
 #set stuff up
@@ -22,22 +22,32 @@ echo "grad student who  knows  differential equations."
 echo "------------------------------------------------"
 
 if [ "$1" == "cp" ]; then
-	echo "Will only copy midas files over to this computer."
-elif [ ! "$1" == "ow" ]; then
-  echo "Re-run the script with argument 'ow' if you want to overwrite the files previously generated for a given run, or with argument 'cp' if you only want to copy midas files over and not sort any data."
+	echo "Will only copy midas files over to this computer and convert them to sfu format."
+elif [ "$1" == "ow" ]; then
+  echo "Will overwrite the files previously generated for the sorted run, not including midas and sfu files."
+elif [ "$1" == "superow" ]; then
+  echo "Will overwrite the files previously generated for the sorted run, including midas and sfu files."
 else
-  echo "Will overwrite the files previously generated for the sorted run."
+  echo "Re-run the script with argument:"
+  echo "'ow' - if you want to overwrite the files previously generated for a given run (except midas and sfu files)"
+  echo "'superow' - if you want to overwrite the files previously generated for a given run (including midas and sfu files)"
+  echo "'cp' - if you only want to copy midas files over and convert to sfu format, but not sort any data"
 fi
 
 echo "Enter the number of the run which you would like to sort: "
 read RUN
 echo ""
 
+if [ "$1" == "superow" ]; then
+  rm midas/run"$RUN"*.mid
+  rm sfu/run"$RUN".sfu
+fi
+
 if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -gt 0 ]; then
 	echo "Data for run "$RUN" has already been copied to this computer."
 	echo "Will sort from this data."
 else
-	echo "Data for run "$RUN" has not yet been copied to this computer."
+	echo "Data for run "$RUN" is not present on this computer."
 	echo "Attempting to copy via SCP."
 	scp "$SCP_LOC"run"$RUN*".mid midas/
 fi
@@ -47,10 +57,6 @@ if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -lt 1 ]; then
 	exit
 fi
 
-#exit if the user has specified they only want to copy data
-if [ "$1" == "cp" ]; then
-	exit
-fi
 
 SUBRUNS=$(ls -1 midas/run"$RUN"*.mid | wc -l)
 echo "$SUBRUNS subrun(s) detected."
@@ -72,10 +78,15 @@ fi
 #clean up
 rm runs.list
 
+#exit if the user has specified they only want to copy and convert data
+if [ "$1" == "cp" ]; then
+	exit
+fi
+
 #generate histograms if needed
 echo ""
 echo "Generating histograms for run "$RUN"..."
-if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ]; then
+if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "-----------------------------------------------"
 echo "Generating Tigress/BGO hit pattern histogram..."
@@ -90,7 +101,7 @@ echo "-------------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f TigressCsIArray_TTCal/run"$RUN"_TigressCsIArray_TTCal.root ] || [ "$1" == "ow" ]; then
+if [ ! -f TigressCsIArray_TTCal/run"$RUN"_TigressCsIArray_TTCal.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating Tigress/CsI timing histogram..."
@@ -106,7 +117,7 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ER/run"$RUN"_CsIArray_PID_ER.root ] || [ "$1" == "ow" ]; then
+if [ ! -f CsIArray_PID_ER/run"$RUN"_CsIArray_PID_ER.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating CsI PID histogram..."
@@ -121,7 +132,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalRing/run"$RUN"_Tigress_ECalRing.mca ] || [ "$1" == "ow" ]; then
+if [ ! -f Tigress_ECalRing/run"$RUN"_Tigress_ECalRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring spectra..."
@@ -136,7 +147,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing/run"$RUN"_Tigress_ECalABRing.mca ] || [ "$1" == "ow" ]; then
+if [ ! -f Tigress_ECalABRing/run"$RUN"_Tigress_ECalABRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra..."
@@ -152,7 +163,7 @@ echo ""
 fi
 
 
-if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ]; then
+if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
@@ -168,7 +179,7 @@ echo ""
 fi
 
 
-if [ ! -f TigressCsIArray_TTCal_fromsepdata/run"$RUN"_TigressCsIArray_TTCal_fromsepdata.root ] || [ "$1" == "ow" ]; then
+if [ ! -f TigressCsIArray_TTCal_fromsepdata/run"$RUN"_TigressCsIArray_TTCal_fromsepdata.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating Tigress/CsI timing histogram from separated data..."
@@ -183,7 +194,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ]; then
+if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra from separated data..."
@@ -199,7 +210,7 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ]; then
+if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating PID separated data..."
@@ -214,7 +225,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ]; then
+if [ ! -f Tigress_ECalABRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."

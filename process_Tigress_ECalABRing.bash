@@ -11,11 +11,6 @@ cp GenericMasterFiles/master26563_Tigress_ECalABRing MasterFiles/master"$1"_Tigr
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
 
-#do separation on trigbit 69 (Tigress+CsI+RF)
-mkdir TBsep
-#separate_TrigBits sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu 69
-cp sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu
-
 #make the Tigress/BGO hit pattern ROOT file
 mkdir Tigress_ECalABRing
 Tigress_ECalABRing MasterFiles/master"$1"_Tigress_ECalABRing

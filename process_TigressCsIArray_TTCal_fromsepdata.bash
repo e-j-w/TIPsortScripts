@@ -10,11 +10,7 @@ cp GenericMasterFiles/master26563_TigressCsIArrayTTCal MasterFiles/master"$1"_Ti
 #replace master file strings with appropriate values
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCal
 sed -i 's/TigressCsIArray_TTCal/TigressCsIArray_TTCal_fromsepdata/g'  MasterFiles/master"$1"_TigressCsIArrayTTCal
-
-
-#do separation on trigbit 69 (Tigress+RF+CsI)
-mkdir TBsep
-separate_TrigBits TigressCsIArray_TTCalsep/run"$1"_TigressCsIArrayTTCalsep.sfu TBsep/run"$1"_TBsep.sfu 69
+sed -i 's#sfu/run'"$1"'.sfu#TigressCsIArray_TTCalsep/run'"$1"'_TigressCsIArrayTTCalsep.sfu#g'  MasterFiles/master"$1"_TigressCsIArrayTTCal
 
 #make the Tigress/BGO hit pattern ROOT file
 mkdir TigressCsIArray_TTCal_fromsepdata
@@ -24,7 +20,6 @@ TigressCsIArray_TTCal MasterFiles/master"$1"_TigressCsIArrayTTCal
 #remove intermediate data files to save disk space and cleanup
 echo ""
 echo "Cleaning up..."
-rm -rf TBsep/
 rm -rf MasterFiles/
 
 echo ""

@@ -9,23 +9,16 @@ cp GenericMasterFiles/master26563_Tigress_ECalABRing MasterFiles/master"$1"_Tigr
 
 #replace master file strings with appropriate values
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_Tigress_ECalABRing
-
-
-#do separation on trigbit 69 (Tigress+CsI+RF)
-mkdir TBsep
-#separate_TrigBits sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu 69
-cp CsIArray_PID_ERsep0p2a/run"$1"_PID_ERsep.sfu TBsep/run"$1"_TBsep.sfu
+sed -i 's#sfu/run'"$1"'.sfu#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
 #make the Tigress/BGO hit pattern ROOT file
 mkdir Tigress_ECalABRing_fromPIDsepdata0p2a
 Tigress_ECalABRing MasterFiles/master"$1"_Tigress_ECalABRing
 mv Ring_ECalAB.mca Tigress_ECalABRing_fromPIDsepdata0p2a/run"$1"_Tigress_ECalABRing_fromPIDsepdata.mca
 
+#replace master file strings with appropriate values
+sed -i 's#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep2p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
-#do separation on trigbit 69 (Tigress+CsI+RF)
-mkdir TBsep
-#separate_TrigBits sfu/run"$1".sfu TBsep/run"$1"_TBsep.sfu 69
-cp CsIArray_PID_ERsep2p0a/run"$1"_PID_ERsep.sfu TBsep/run"$1"_TBsep.sfu
 
 #make the Tigress/BGO hit pattern ROOT file
 mkdir Tigress_ECalABRing_fromPIDsepdata2p0a
@@ -37,7 +30,6 @@ mv Ring_ECalAB.mca Tigress_ECalABRing_fromPIDsepdata2p0a/run"$1"_Tigress_ECalABR
 #remove intermediate data files to save disk space and cleanup
 echo ""
 echo "Cleaning up..."
-rm -rf TBsep/
 rm -rf MasterFiles/
 
 echo ""

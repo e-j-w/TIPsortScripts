@@ -6,10 +6,13 @@ unused
 *.mca
 *.pdf
 *.ods
+*.sou
 *~
 *~lock*
 *.list
 *.mat
+test*
 cluster.dat
 GRSIsort
 master
+gfinit.dat

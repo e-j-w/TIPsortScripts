@@ -4,6 +4,6 @@ input_data         TigressCsIArray_TTCalsep/run26563_TigressCsIArrayTTCalsep.sfu
 cluster_file       cluster.dat
 TIGRESS_calibration_parameters    ParFiles/TIGRESS_par.dat
 CSIARRAY_calibration_parameters   ParFiles/CSIARRAY_par.dat
-root_gate_file                    ParFiles/gates_September2016.root
-gate_name_file                    ParFiles/gateNames.dat
+root_gate_file                    ParFiles/gates_December2016.root
+gate_name_file                    ParFiles/gateNames_December2016.dat
 output_data                       run26563_PID_ERsep.sfu
