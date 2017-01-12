@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the September 2016 S1232 run
+# This version covers the December 2016 S1232 run
 
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/"
 MAP="maps/December2016.map"
