@@ -3,8 +3,11 @@
 # A script for automatic online sorting.
 # This version covers the December 2016 S1232 run
 
+#variables unique to this run
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/"
 MAP="maps/December2016.map"
+GATE_FILENAME="gates_December2016.root"
+GATE_NAME_FILENAME="gateNames_December2016.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -14,31 +17,32 @@ if [ ! -d sfu ]; then
 	mkdir sfu
 fi
 
-
-echo "------------------------------------------------"
-echo "Welcome to the fancy auto sort script which will" 
-echo "never fail, since it was engineered by an expert" 
-echo "grad student who  knows  differential equations."
-echo "------------------------------------------------"
+echo ""
+echo "------------------------------------------------------------"
+echo "You are now sorting: DECEMBER 2016 S1232 TIP TARGET TEST RUN"
+echo "------------------------------------------------------------"
+echo ""
 
 if [ "$1" == "cp" ]; then
 	echo "Will only copy midas files over to this computer and convert them to sfu format."
 elif [ "$1" == "ow" ]; then
   echo "Will overwrite the files previously generated for the sorted run, not including midas and sfu files."
-elif [ "$1" == "superow" ]; then
+elif [ "$1" == "justfuckmyshitup" ]; then
   echo "Will overwrite the files previously generated for the sorted run, including midas and sfu files."
 else
   echo "Re-run the script with argument:"
-  echo "'ow' - if you want to overwrite the files previously generated for a given run (except midas and sfu files)"
-  echo "'superow' - if you want to overwrite the files previously generated for a given run (including midas and sfu files)"
   echo "'cp' - if you only want to copy midas files over and convert to sfu format, but not sort any data"
+  echo "'ow' - if you want to overwrite the files previously generated for a given run (except midas and sfu files)"
+  echo "'justfuckmyshitup' - if you want to nuke everything from orbit and start over (overwriting the files previously generated for a given run including midas and sfu files)"
 fi
 
+echo ""
 echo "Enter the number of the run which you would like to sort: "
 read RUN
 echo ""
 
-if [ "$1" == "superow" ]; then
+if [ "$1" == "justfuckmyshitup" ]; then
+	echo "Removing all traces of data for run "$RUN" on this computer."
   rm midas/run"$RUN"*.mid
   rm sfu/run"$RUN".sfu
 fi
@@ -86,7 +90,7 @@ fi
 #generate histograms if needed
 echo ""
 echo "Generating histograms for run "$RUN"..."
-if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "-----------------------------------------------"
 echo "Generating Tigress/BGO hit pattern histogram..."
@@ -101,7 +105,7 @@ echo "-------------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f TigressCsIArray_TTCal/run"$RUN"_TigressCsIArray_TTCal.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f TigressCsIArray_TTCal/run"$RUN"_TigressCsIArray_TTCal.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating Tigress/CsI timing histogram..."
@@ -117,7 +121,7 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ER/run"$RUN"_CsIArray_PID_ER.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f CsIArray_PID_ER/run"$RUN"_CsIArray_PID_ER.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating CsI PID histogram..."
@@ -132,7 +136,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalRing/run"$RUN"_Tigress_ECalRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f Tigress_ECalRing/run"$RUN"_Tigress_ECalRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring spectra..."
@@ -147,7 +151,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing/run"$RUN"_Tigress_ECalABRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f Tigress_ECalABRing/run"$RUN"_Tigress_ECalABRing.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra..."
@@ -163,7 +167,7 @@ echo ""
 fi
 
 
-if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
@@ -179,7 +183,7 @@ echo ""
 fi
 
 
-if [ ! -f TigressCsIArray_TTCal_fromsepdata/run"$RUN"_TigressCsIArray_TTCal_fromsepdata.root ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f TigressCsIArray_TTCal_fromsepdata/run"$RUN"_TigressCsIArray_TTCal_fromsepdata.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating Tigress/CsI timing histogram from separated data..."
@@ -194,7 +198,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra from separated data..."
@@ -210,13 +214,13 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN
+./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -225,7 +229,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "superow" ]; then
+if [ ! -f Tigress_ECalABRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."

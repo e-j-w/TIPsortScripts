@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Script to generate PID separated data from the time correlated data.
+# Argument 1 is the run number
+# Argument 2 is the gate file (.root)
+# Argument 3 is the game name file
 
 #copy master files
 mkdir MasterFiles
@@ -8,6 +11,8 @@ cp GenericMasterFiles/master26563_CsIArray_PID_ERsep MasterFiles/master"$1"_CsIA
 
 #replace master file strings with appropriate values
 sed -i 's/26563/'"$1"'/g' MasterFiles/master"$1"_CsIArray_PID_ERsep
+sed -i 's/gates_December2016.root/'"$2"'/g' MasterFiles/master"$1"_CsIArray_PID_ERsep
+sed -i 's/gateNames_December2016.dat/'"$3"'/g' MasterFiles/master"$1"_CsIArray_PID_ERsep
 
 #do separation
 mkdir CsIArray_PID_ERsep0p2a
