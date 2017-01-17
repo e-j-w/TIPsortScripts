@@ -4,6 +4,7 @@
 # This version covers the December 2016 S1232 run
 
 #variables unique to this run
+EXPERIMENT_TITLE="DECEMBER 2016 S1232 TIP TARGET TEST RUN"
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/"
 MAP="maps/December2016.map"
 GATE_FILENAME="gates_December2016.root"
@@ -19,7 +20,7 @@ fi
 
 echo ""
 echo "------------------------------------------------------------"
-echo "You are now sorting: DECEMBER 2016 S1232 TIP TARGET TEST RUN"
+echo "You are now sorting: "$EXPERIMENT_TITLE""
 echo "------------------------------------------------------------"
 echo ""
 
@@ -42,45 +43,48 @@ read RUN
 echo ""
 
 if [ "$1" == "justfuckmyshitup" ]; then
-	echo "Removing all traces of data for run "$RUN" on this computer."
+	echo "Removing all traces of data for run "$RUN" on this computer..."
   rm midas/run"$RUN"*.mid
   rm sfu/run"$RUN".sfu
 fi
 
-if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -gt 0 ]; then
-	echo "Data for run "$RUN" has already been copied to this computer."
-	echo "Will sort from this data."
-else
-	echo "Data for run "$RUN" is not present on this computer."
-	echo "Attempting to copy via SCP."
-	scp "$SCP_LOC"run"$RUN*".mid midas/
-fi
+if [ $(ls -1 sfu/run"$RUN".sfu | wc -l) -lt 1 ]; then
+		
+		if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -gt 0 ]; then
+				echo "Data for run "$RUN" has already been copied to this computer."
+				echo "Will sort from this data."
+		else
+				echo "Data for run "$RUN" is not present on this computer."
+				echo "Attempting to copy via SCP."
+				scp "$SCP_LOC"run"$RUN*".mid midas/
+		fi
 
-if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -lt 1 ]; then
-	echo "ERROR: could not retrieve data for run "$RUN".  Exiting..."
-	exit
-fi
+		if [ $(ls -1 midas/run"$RUN"*.mid | wc -l) -lt 1 ]; then
+				echo "ERROR: could not retrieve data for run "$RUN".  Exiting..."
+				exit
+		fi
+		
+		SUBRUNS=$(ls -1 midas/run"$RUN"*.mid | wc -l)
+		echo "$SUBRUNS subrun(s) detected."
 
-
-SUBRUNS=$(ls -1 midas/run"$RUN"*.mid | wc -l)
-echo "$SUBRUNS subrun(s) detected."
-
-#make list of subruns (special command needed to avoid listing color codes alongside filenames on midtig02) 
-for file in $(ls -f midas/run"$RUN"*); do echo $file; done > runs.list
-
-
-#convert the run/subruns(s) from midas to sfu format, if needed
-if [ $(ls -1 sfu/run"$RUN".sfu | wc -l) -gt 0 ]; then
-	  echo ".sfu file already exists for this run."
-	  echo "Event data from run "$RUN" has already been reconstructed."
-	  echo "Will use this data."
-else
-	  echo "Reconstructing events from run "$RUN"..."
+		#make list of subruns (special command needed to 
+		#avoid listing color codes alongside filenames on midtig02) 
+		for file in $(ls -f midas/run"$RUN"*); do echo $file; done > runs.list
+		
+		#convert the run/subruns(s) from midas to sfu format
+		echo "Reconstructing events from run "$RUN"..."
 	  midas2sfu runs.list sfu/run"$RUN".sfu $MAP
+	  
+	  #clean up
+		rm runs.list
+	  
+else
+		echo ".sfu file already exists for this run."
+		echo "Event data from run "$RUN" has already been reconstructed."
+		echo "Will use this data."
 fi
 
-#clean up
-rm runs.list
+
 
 #exit if the user has specified they only want to copy and convert data
 if [ "$1" == "cp" ]; then

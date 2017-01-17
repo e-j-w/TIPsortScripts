@@ -10,6 +10,7 @@ unused
 *~
 *~lock*
 *.list
+list
 *.mat
 test*
 cluster.dat
