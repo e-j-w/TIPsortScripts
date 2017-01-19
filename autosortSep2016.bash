@@ -198,7 +198,7 @@ echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN gates_September2016.root gateNames_September2016.dat
+./process_CsIArray_PID_ER_sepdata.bash $RUN
 else
 echo ""
 echo "--------------------------------------------------------"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to generate the Tigress/BGO hit pattern for a given run.
+# Script to generate the Tigress/CsI timing plot for a given run.
 # Argument 1 is the run number.
 
 #copy master files
@@ -11,7 +11,7 @@ cp GenericMasterFiles/master26563_TigressCsIArrayTTCal MasterFiles/master"$1"_Ti
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCal
 
 
-#make the Tigress/BGO hit pattern ROOT file
+#make the Tigress/CsI timing ROOT file
 mkdir TigressCsIArray_TTCal
 TigressCsIArray_TTCal MasterFiles/master"$1"_TigressCsIArrayTTCal
 #mv TigressBGO_TTHP.root TigressCsIArray_TTCal/run"$1"_TigressCsIArray_TTCal.root
