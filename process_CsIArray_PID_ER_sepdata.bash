@@ -17,11 +17,14 @@ sed -i 's/gateNames_December2016.dat/'"$3"'/g' MasterFiles/master"$1"_CsIArray_P
 #do separation
 mkdir CsIArray_PID_ERsep0p1a
 mkdir CsIArray_PID_ERsep0p2a
+mkdir CsIArray_PID_ERsep0p3a
 mkdir CsIArray_PID_ERsep2p0a
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 1
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p1a/run"$1"_PID_ERsep.sfu
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 2
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p2a/run"$1"_PID_ERsep.sfu
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 3
+mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p3a/run"$1"_PID_ERsep.sfu
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 0
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep2p0a/run"$1"_PID_ERsep.sfu
 

@@ -12,7 +12,15 @@ cp GenericMasterFiles/master26563_Tigress_ECalABRing MasterFiles/master"$1"_Tigr
 
 #replace master file strings with appropriate values
 sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_Tigress_ECalABRing
-sed -i 's#sfu/run'"$1"'.sfu#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+sed -i 's#sfu/run'"$1"'.sfu#CsIArray_PID_ERsep0p1a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+
+#make the 0p1a spectrum
+mkdir Tigress_ECalABSuppRingEGated_fromPIDsepdata0p1a
+Tigress_ECalABSuppRingEGated MasterFiles/master"$1"_Tigress_ECalABRing $2 $3
+mv Ring_ECalABSuppEGated.mca Tigress_ECalABSuppRingEGated_fromPIDsepdata0p1a/run"$1"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca
+
+#replace master file strings with appropriate values
+sed -i 's#CsIArray_PID_ERsep0p1a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
 #make the 0p2a spectrum
 mkdir Tigress_ECalABSuppRingEGated_fromPIDsepdata0p2a
@@ -20,7 +28,15 @@ Tigress_ECalABSuppRingEGated MasterFiles/master"$1"_Tigress_ECalABRing $2 $3
 mv Ring_ECalABSuppEGated.mca Tigress_ECalABSuppRingEGated_fromPIDsepdata0p2a/run"$1"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca
 
 #replace master file strings with appropriate values
-sed -i 's#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep2p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+sed -i 's#CsIArray_PID_ERsep0p2a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep0p3a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+
+#make the 0p3a spectrum
+mkdir Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a
+Tigress_ECalABSuppRingEGated MasterFiles/master"$1"_Tigress_ECalABRing $2 $3
+mv Ring_ECalABSuppEGated.mca Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$1"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca
+
+#replace master file strings with appropriate values
+sed -i 's#CsIArray_PID_ERsep0p3a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep2p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
 #make the 2p0a spectrum
 mkdir Tigress_ECalABSuppRingEGated_fromPIDsepdata2p0a

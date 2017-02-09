@@ -37,10 +37,17 @@ else
   echo "'justfuckmyshitup' - if you want to nuke everything from orbit and start over (overwriting the files previously generated for a given run including midas and sfu files)"
 fi
 
-echo ""
-echo "Enter the number of the run which you would like to sort: "
-read RUN
-echo ""
+#allow the run number to be specified as a parameter
+if [ "$1" == "-rn" ]; then
+	RUN=$2
+elif [ "$2" == "-rn" ]; then
+	RUN=$3
+else
+	echo ""
+	echo "Enter the number of the run which you would like to sort: "
+	read RUN
+	echo ""
+fi
 
 if [ "$1" == "justfuckmyshitup" ]; then
 	echo "Removing all traces of data for run "$RUN" on this computer..."
@@ -278,7 +285,7 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+if [ ! -f CsIArray_PID_ERsep0p3a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating PID separated data..."
@@ -293,7 +300,23 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+if [ ! -f CsIArray_AngleBetweenHitssep_fromPIDsepdata0p3a/run"$RUN"_AngleBetweenHitssep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating CsI hit angle separated data..."
+echo "------------------------------------------"
+echo ""
+./process_CsIArray_AngleBetweenHits_sepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "CsI hit angle separated data already exists, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
+
+if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring suppressed addback spectra from PID separated data..."
@@ -308,7 +331,7 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata2p0a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data..."
@@ -319,6 +342,21 @@ else
 echo ""
 echo "--------------------------------------------------------"
 echo "Energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
+if [ ! -f Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS ring suppressed addback spectra from CsI hit angle seperated data..."
+echo "------------------------------------------"
+echo ""
+./process_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.bash $RUN 4000 5000
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS ring suppressed addback spectra from CsI hit angle separated data already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
