@@ -285,7 +285,7 @@ echo ""
 fi
 
 
-if [ ! -f CsIArray_PID_ERsep0p3a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+if [ ! -f CsIArray_PID_ERsep1p2a/run"$RUN"_PID_ERsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating PID separated data..."
@@ -316,7 +316,7 @@ echo ""
 fi
 
 
-if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring suppressed addback spectra from PID separated data..."
