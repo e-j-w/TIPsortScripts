@@ -361,6 +361,36 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
+if [ ! -f TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata1p2a/run"$RUN"_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS CsI ring suppressed addback spectra..."
+echo "------------------------------------------"
+echo ""
+./process_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.bash $RUN 4000 5000
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS CsI ring suppressed addback spectra already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
+if [ ! -f TigressCsIArray_CsIECal_1083Gate_fromPIDsepdata0p2a/run"$RUN"_TigressCsIArray_CsIECal_TigEGate_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated CsI energy spectra gated on TIGRESS energy..."
+echo "------------------------------------------"
+echo ""
+./process_TigressCsIArray_CsIECal_TigEGated_fromPIDsepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated CsI energy spectra gated on TIGRESS energy already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
 
 #echo ""
 #echo "------------------------------------------------------"
