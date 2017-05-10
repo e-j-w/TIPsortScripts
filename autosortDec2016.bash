@@ -25,6 +25,8 @@ fi
 #copy the proper parameter files
 cp "$PARFILE_LOC"CSIARRAY_par.dat ParFiles/
 cp "$PARFILE_LOC"TIGRESS_par.dat ParFiles/
+cp "$PARFILE_LOC""$GATE_FILENAME" ParFiles/
+cp "$PARFILE_LOC""$GATE_NAME_FILENAME" ParFiles/
 
 echo ""
 echo "------------------------------------------------------------"
@@ -411,6 +413,8 @@ fi
 #clean up
 rm ParFiles/CSIARRAY_par.dat
 rm ParFiles/TIGRESS_par.dat
+rm ParFiles/"$GATE_FILENAME"
+rm ParFiles/"$GATE_NAME_FILENAME"
 
 echo ""
 echo "--------------------------------------------------------"

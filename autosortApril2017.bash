@@ -5,6 +5,7 @@
 
 #variables unique to this run
 EXPERIMENT_TITLE="APRIL 2017 S1232 TIP TARGET TEST RUN"
+PARFILE_LOC="ParFiles/December2016/"
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/April2017"
 MAP="maps/April2017.map"
 GATE_FILENAME="gates_December2016.root"
@@ -17,6 +18,15 @@ fi
 if [ ! -d sfu ]; then
 	mkdir sfu
 fi
+if [ ! -d ParFiles ]; then
+	mkdir ParFiles
+fi
+
+#copy the proper parameter files
+cp "$PARFILE_LOC"CSIARRAY_par.dat ParFiles/
+cp "$PARFILE_LOC"TIGRESS_par.dat ParFiles/
+cp "$PARFILE_LOC""$GATE_FILENAME" ParFiles/
+cp "$PARFILE_LOC""$GATE_NAME_FILENAME" ParFiles/
 
 echo ""
 echo "------------------------------------------------------------"
@@ -146,6 +156,12 @@ echo "Calibrated TIGRESS ring suppressed addback spectra already exist, skipping
 echo "--------------------------------------------------------"
 echo ""
 fi
+
+#clean up
+rm ParFiles/CSIARRAY_par.dat
+rm ParFiles/TIGRESS_par.dat
+rm ParFiles/"$GATE_FILENAME"
+rm ParFiles/"$GATE_NAME_FILENAME"
 
 echo ""
 echo "--------------------------------------------------------"

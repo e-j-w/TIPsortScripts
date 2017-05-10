@@ -28,4 +28,8 @@ master
 master_*
 gfinit.dat
 MasterFiles
+ParFiles/CSIARRAY_par.dat
+ParFiles/TIGRESS_par.dat
+ParFiles/gate*.root
+ParFiles/gate*.dat
 *Trash*

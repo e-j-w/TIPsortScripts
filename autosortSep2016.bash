@@ -4,6 +4,7 @@
 # This version covers the September 2016 S1232 run
 
 SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
+PARFILE_LOC="ParFiles/December2016/"
 MAP="maps/September2016.map"
 GATE_FILENAME="gates_September2016.root"
 GATE_NAME_FILENAME="gateNames_September2016.dat"
@@ -15,7 +16,15 @@ fi
 if [ ! -d sfu ]; then
 	mkdir sfu
 fi
+if [ ! -d ParFiles ]; then
+	mkdir ParFiles
+fi
 
+#copy the proper parameter files
+cp "$PARFILE_LOC"CSIARRAY_par.dat ParFiles/
+cp "$PARFILE_LOC"TIGRESS_par.dat ParFiles/
+cp "$PARFILE_LOC""$GATE_FILENAME" ParFiles/
+cp "$PARFILE_LOC""$GATE_NAME_FILENAME" ParFiles/
 
 echo "------------------------------------------------"
 echo "Welcome to the fancy auto sort script which will" 
@@ -232,6 +241,12 @@ echo "Select 'File/Quit ROOT' when done viewing to continue."
 echo "------------------------------------------------------"
 echo ""
 check_Fold2D sfu/run"$RUN".sfu 1 3
+
+#clean up
+rm ParFiles/CSIARRAY_par.dat
+rm ParFiles/TIGRESS_par.dat
+rm ParFiles/"$GATE_FILENAME"
+rm ParFiles/"$GATE_NAME_FILENAME"
 
 echo ""
 echo "----------------------------------------------------------------------------------------------------"
