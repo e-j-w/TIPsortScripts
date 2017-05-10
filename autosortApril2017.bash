@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the December 2016 S1232 run
+# This version covers the April 2017 S1232 run (Ca target test)
 
 #variables unique to this run
 EXPERIMENT_TITLE="APRIL 2017 S1232 TIP TARGET TEST RUN"

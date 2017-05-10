@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the December 2016 S1232 run
+# This version covers the April 2014 S1232 run (initial 68Se test with oxidized target)
 
 #variables unique to this run
-EXPERIMENT_TITLE="DECEMBER 2016 S1232 TIP TARGET TEST RUN"
+EXPERIMENT_TITLE="APRIL 2014 S1232 TIP TARGET TEST RUN"
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/CaTargetTest/"
-PARFILE_LOC="ParFiles/December2016/"
-MAP="maps/December2016.map"
-GATE_FILENAME="gates_December2016.root"
-GATE_NAME_FILENAME="gateNames_December2016.dat"
+PARFILE_LOC="ParFiles/April2014/"
+MAP="maps/April2014.map"
+GATE_FILENAME="110MeV_CaAu_v2_PIDGates.root"
+GATE_NAME_FILENAME="gateNames.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -299,7 +299,7 @@ echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME 1
+./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME 0
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -308,20 +308,20 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f CsIArray_AngleBetweenHitssep_fromPIDsepdata0p3a/run"$RUN"_AngleBetweenHitssep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating CsI hit angle separated data..."
-echo "------------------------------------------"
-echo ""
-./process_CsIArray_AngleBetweenHits_sepdata.bash $RUN
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "CsI hit angle separated data already exists, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f CsIArray_AngleBetweenHitssep_fromPIDsepdata0p3a/run"$RUN"_AngleBetweenHitssep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating CsI hit angle separated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_CsIArray_AngleBetweenHits_sepdata.bash $RUN
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "CsI hit angle separated data already exists, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
 
 if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
@@ -339,65 +339,65 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data..."
-echo "------------------------------------------"
-echo ""
-./process_Tigress_ECalABSuppRingEGated_fromPIDsepdata.bash $RUN 4000 5000
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "Energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data already exist, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABSuppRingEGated_fromPIDsepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
-if [ ! -f Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating calibrated TIGRESS ring suppressed addback spectra from CsI hit angle seperated data..."
-echo "------------------------------------------"
-echo ""
-./process_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.bash $RUN 4000 5000
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring suppressed addback spectra from CsI hit angle separated data already exist, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated TIGRESS ring suppressed addback spectra from CsI hit angle seperated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated TIGRESS ring suppressed addback spectra from CsI hit angle separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
-if [ ! -f TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata1p2a/run"$RUN"_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating calibrated TIGRESS CsI ring suppressed addback spectra..."
-echo "------------------------------------------"
-echo ""
-./process_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.bash $RUN 4000 5000
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS CsI ring suppressed addback spectra already exist, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata1p2a/run"$RUN"_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated TIGRESS CsI ring suppressed addback spectra..."
+#echo "------------------------------------------"
+#echo ""
+#./process_TigressCsIArray_ECalABSuppCsIRing_fromPIDsepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated TIGRESS CsI ring suppressed addback spectra already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
-if [ ! -f TigressCsIArray_CsIECal_1083Gate_fromPIDsepdata0p2a/run"$RUN"_TigressCsIArray_CsIECal_TigEGate_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating calibrated CsI energy spectra gated on TIGRESS energy..."
-echo "------------------------------------------"
-echo ""
-./process_TigressCsIArray_CsIECal_TigEGated_fromPIDsepdata.bash $RUN
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "Calibrated CsI energy spectra gated on TIGRESS energy already exist, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f TigressCsIArray_CsIECal_1083Gate_fromPIDsepdata0p2a/run"$RUN"_TigressCsIArray_CsIECal_TigEGate_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated CsI energy spectra gated on TIGRESS energy..."
+#echo "------------------------------------------"
+#echo ""
+#./process_TigressCsIArray_CsIECal_TigEGated_fromPIDsepdata.bash $RUN
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated CsI energy spectra gated on TIGRESS energy already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
 
 #echo ""

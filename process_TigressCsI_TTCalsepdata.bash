@@ -20,9 +20,10 @@ sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCalsep
 #do separation
 mkdir TigressCsIArray_TTCalsep
 separate_CsIArray_TTCalDiff MasterFiles/master"$1"_CsIArrayTTCalsep
-separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep
+#separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 4560 4690
-separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 3580 3700
+#separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 3580 3700
+separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 0 100
 
 #remove intermediate data files to save disk space and cleanup
 echo ""

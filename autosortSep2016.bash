@@ -5,6 +5,8 @@
 
 SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
 MAP="maps/September2016.map"
+GATE_FILENAME="gates_September2016.root"
+GATE_NAME_FILENAME="gateNames_September2016.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -198,7 +200,7 @@ echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN
+./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME 1
 else
 echo ""
 echo "--------------------------------------------------------"

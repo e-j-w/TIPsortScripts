@@ -4,6 +4,7 @@
 # Argument 1 is the run number
 # Argument 2 is the gate file (.root)
 # Argument 3 is the game name file
+# Argument 4 should be set to 1 if using charge rather than amplitude for PID
 
 #copy master files
 mkdir MasterFiles
@@ -24,23 +25,23 @@ mkdir CsIArray_PID_ERsep4p0a
 mkdir CsIArray_PID_ERsep1p1a
 mkdir CsIArray_PID_ERsep1p2a
 mkdir CsIArray_PID_ERsep2p1a
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 1
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 1 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p1a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 2
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 2 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p2a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 3
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 0 3 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep0p3a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 0
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep1p0a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 0
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep2p0a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 4 0
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 4 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep4p0a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 1
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 1 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep1p1a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 2
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 2 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep1p2a/run"$1"_PID_ERsep.sfu
-separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 1
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 1 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep2p1a/run"$1"_PID_ERsep.sfu
 
 #remove intermediate data files to save disk space and cleanup
