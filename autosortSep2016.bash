@@ -162,7 +162,7 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN
+./process_TigressCsI_TTCalsepdata.bash $RUN 4560 4690
 else
 echo ""
 echo "--------------------------------------------------------"
