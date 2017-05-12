@@ -28,7 +28,7 @@ separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArra
 echo ""
 echo "Cleaning up..."
 rm -rf MasterFiles/
-#rm run"$1"_CsIArrayTTCalsep.sfu
+rm run"$1"_CsIArrayTTCalsep.sfu
 #rm run"$1"_TigressTTCalsep.sfu
 
 echo ""
