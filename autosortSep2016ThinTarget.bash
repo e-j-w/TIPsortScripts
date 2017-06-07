@@ -1,15 +1,14 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the September 2016 S1232 run (22Ne,28Mg)
+# This version covers the December 2016 S1232 run
 
 #variables unique to this run
-EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 TIP TARGET TEST RUN"
+EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 CsI BALL TEST RUN"
 SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
-PARFILE_LOC="ParFiles/December2016/"
 MAP="maps/September2016.map"
-GATE_FILENAME="gates_September2016.root"
-GATE_NAME_FILENAME="gateNames_September2016.dat"
+GATE_FILENAME="gates_September2016ThinTarget.root"
+GATE_NAME_FILENAME="gateNames_September2016ThinTarget.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -18,15 +17,6 @@ fi
 if [ ! -d sfu ]; then
 	mkdir sfu
 fi
-if [ ! -d ParFiles ]; then
-	mkdir ParFiles
-fi
-
-#copy the proper parameter files
-cp "$PARFILE_LOC"CSIARRAY_par.dat ParFiles/
-cp "$PARFILE_LOC"TIGRESS_par.dat ParFiles/
-cp "$PARFILE_LOC""$GATE_FILENAME" ParFiles/
-cp "$PARFILE_LOC""$GATE_NAME_FILENAME" ParFiles/
 
 echo ""
 echo "------------------------------------------------------------"
@@ -224,7 +214,7 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN 3580 3700
+./process_TigressCsI_TTCalsepdata.bash $RUN
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -301,7 +291,7 @@ echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME 1
+./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -309,6 +299,22 @@ echo "PID separated data already exists, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
+
+if [ ! -f Tigress_ECalABRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."
+echo "------------------------------------------"
+echo ""
+./process_Tigress_ECalABRing_fromPIDsepdata.bash $RUN 4000 5000
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS ring addback spectra from PID separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
 
 if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
@@ -325,6 +331,37 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
+#if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated #data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABSuppRingEGated_fromPIDsepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Energy gated calibrated TIGRESS ring suppressed addback spectra from PID separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
+
+#if [ ! -f Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata0p3a/run"$RUN"_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated TIGRESS ring suppressed addback spectra from CsI hit angle seperated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABSuppRing_fromAngleBetweenHitssepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated TIGRESS ring suppressed addback spectra from CsI hit angle separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
+
+
 #echo ""
 #echo "------------------------------------------------------"
 #echo "Generating Tigress/CsI fold histogram..."
@@ -332,12 +369,6 @@ fi
 #echo "------------------------------------------------------"
 #echo ""
 #check_Fold2D sfu/run"$RUN".sfu 1 3
-
-#clean up
-rm ParFiles/CSIARRAY_par.dat
-rm ParFiles/TIGRESS_par.dat
-rm ParFiles/"$GATE_FILENAME"
-rm ParFiles/"$GATE_NAME_FILENAME"
 
 echo ""
 echo "--------------------------------------------------------"
