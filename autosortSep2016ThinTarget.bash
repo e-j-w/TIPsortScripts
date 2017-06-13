@@ -214,7 +214,7 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN
+./process_TigressCsI_TTCalsepdata.bash $RUN 3580 3700
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -291,7 +291,7 @@ echo "------------------------------------------"
 echo "Generating PID separated data..."
 echo "------------------------------------------"
 echo ""
-./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME
+./process_CsIArray_PID_ER_sepdata.bash $RUN $GATE_FILENAME $GATE_NAME_FILENAME 1
 else
 echo ""
 echo "--------------------------------------------------------"

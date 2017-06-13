@@ -7,3 +7,5 @@ do
     ./autosortSep2016ThinTarget.bash ow -rn $RUN
 done
 
+./autosortSep2016ThinTarget.bash ow -rn 2_39597
+
