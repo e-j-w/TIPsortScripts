@@ -21,6 +21,7 @@ mkdir CsIArray_PID_ERsep0p2a
 mkdir CsIArray_PID_ERsep0p3a
 mkdir CsIArray_PID_ERsep1p0a
 mkdir CsIArray_PID_ERsep2p0a
+mkdir CsIArray_PID_ERsep3p0a
 mkdir CsIArray_PID_ERsep4p0a
 mkdir CsIArray_PID_ERsep1p1a
 mkdir CsIArray_PID_ERsep1p2a
@@ -35,6 +36,8 @@ separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep1p0a/run"$1"_PID_ERsep.sfu
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 2 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep2p0a/run"$1"_PID_ERsep.sfu
+separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 3 0 $4
+mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep3p0a/run"$1"_PID_ERsep.sfu
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 4 0 $4
 mv run"$1"_PID_ERsep.sfu CsIArray_PID_ERsep4p0a/run"$1"_PID_ERsep.sfu
 separate_CsIArray_PID_ER MasterFiles/master"$1"_CsIArray_PID_ERsep 1 1 $4

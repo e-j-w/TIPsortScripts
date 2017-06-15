@@ -51,7 +51,15 @@ Tigress_ECalABSuppRing MasterFiles/master"$1"_Tigress_ECalABRing $2 $3
 mv Ring_ECalABSupp.mca Tigress_ECalABSuppRing_fromPIDsepdata2p0a/run"$1"_Tigress_ECalABSuppRing_fromPIDsepdata.mca
 
 #replace master file strings with appropriate values
-sed -i 's#CsIArray_PID_ERsep2p0a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep4p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+sed -i 's#CsIArray_PID_ERsep2p0a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep3p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
+
+#make the 3p0a spectrum
+mkdir Tigress_ECalABSuppRing_fromPIDsepdata3p0a
+Tigress_ECalABSuppRing MasterFiles/master"$1"_Tigress_ECalABRing $2 $3
+mv Ring_ECalABSupp.mca Tigress_ECalABSuppRing_fromPIDsepdata3p0a/run"$1"_Tigress_ECalABSuppRing_fromPIDsepdata.mca
+
+#replace master file strings with appropriate values
+sed -i 's#CsIArray_PID_ERsep3p0a/run'"$1"'_PID_ERsep.sfu#CsIArray_PID_ERsep4p0a/run'"$1"'_PID_ERsep.sfu#g'  MasterFiles/master"$1"_Tigress_ECalABRing
 
 #make the 4p0a spectrum
 mkdir Tigress_ECalABSuppRing_fromPIDsepdata4p0a

@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the December 2016 S1232 run
+# This version covers the September 2016 S1232 run
 
 #variables unique to this run
-EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 CsI BALL TEST RUN"
-SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
+EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 CsI BALL TEST RUN - THIN TARGET"
+SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/TipTest/"
+PARFILE_LOC="ParFiles/September2016/"
 MAP="maps/September2016.map"
 GATE_FILENAME="gates_September2016ThinTarget.root"
 GATE_NAME_FILENAME="gateNames_September2016ThinTarget.dat"
@@ -17,6 +18,12 @@ fi
 if [ ! -d sfu ]; then
 	mkdir sfu
 fi
+
+#copy the proper parameter files
+cp "$PARFILE_LOC"CSIARRAY_par.dat ParFiles/
+cp "$PARFILE_LOC"TIGRESS_par.dat ParFiles/
+cp "$PARFILE_LOC""$GATE_FILENAME" ParFiles/
+cp "$PARFILE_LOC""$GATE_NAME_FILENAME" ParFiles/
 
 echo ""
 echo "------------------------------------------------------------"

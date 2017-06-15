@@ -5,7 +5,7 @@
 
 #variables unique to this run
 EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 TIP TARGET TEST RUN"
-SCP_LOC="tigress@midtig06.triumf.ca:/data1/tigress/TipTest/"
+SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/TipTest/"
 PARFILE_LOC="ParFiles/December2016/"
 MAP="maps/September2016.map"
 GATE_FILENAME="gates_September2016.root"
