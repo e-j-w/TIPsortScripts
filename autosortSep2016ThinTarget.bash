@@ -10,6 +10,7 @@ PARFILE_LOC="ParFiles/September2016/"
 MAP="maps/September2016.map"
 GATE_FILENAME="gates_September2016ThinTarget.root"
 GATE_NAME_FILENAME="gateNames_September2016ThinTarget.dat"
+RING_DS_FILENAME="ring_ds.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -209,7 +210,7 @@ echo ""
 else
 echo ""
 echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring suppressedaddback spectra already exist, skipping..."
+echo "Calibrated TIGRESS ring suppressed addback spectra already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
@@ -279,14 +280,14 @@ fi
 if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
-echo "Generating calibrated TIGRESS ring addback spectra from separated data..."
+echo "Generating calibrated TIGRESS ring supressed addback spectra from separated data..."
 echo "------------------------------------------"
 echo ""
-./process_Tigress_ECalABRing_fromsepdata.bash $RUN
+./process_Tigress_ECalABSuppRing_fromsepdata.bash $RUN
 else
 echo ""
 echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring addback spectra from separated data already exist, skipping..."
+echo "Calibrated TIGRESS ring supressed addback spectra from separated data already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
@@ -334,6 +335,21 @@ else
 echo ""
 echo "--------------------------------------------------------"
 echo "Calibrated TIGRESS ring suppressed addback spectra from PID separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
+if [ ! -f Tigress_ECalABSuppRingDopplerCorrected_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating calibrated TIGRESS ring suppressed addback, ring Doppler corrected spectra from PID separated data..."
+echo "------------------------------------------"
+echo ""
+./process_Tigress_ECalABSuppRingDopplerCorrected_fromPIDsepdata.bash $RUN 4000 5000 "$PARFILE_LOC""$RING_DS_FILENAME"
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Calibrated TIGRESS ring suppressed addback, ring Doppler corrected spectra from PID separated data already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi

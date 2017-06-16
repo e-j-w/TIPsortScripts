@@ -32,4 +32,4 @@ Detector_position_file		  ParFiles/September2016/TIGRESS_detector_positions.par
 -------------------------------- --------------------------------------------------------------------
 Suppression_map			  ParFiles/September2016/TIGRESS_suppression_map.par
 -------------------------------- --------------------------------------------------------------------
-TIGRESS_TTCal_gate_length                     120
+TIGRESS_TTCal_gate_length                     160
