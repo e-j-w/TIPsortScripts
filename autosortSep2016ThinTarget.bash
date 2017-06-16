@@ -216,6 +216,8 @@ echo ""
 fi
 
 
+#Time separation should include a Tigress-Tigress gate since the purpose of the thin target is to identify populated states, and this will be done using gamma-gamma
+
 if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
@@ -283,7 +285,7 @@ echo "------------------------------------------"
 echo "Generating calibrated TIGRESS ring supressed addback spectra from separated data..."
 echo "------------------------------------------"
 echo ""
-./process_Tigress_ECalABSuppRing_fromsepdata.bash $RUN
+./process_Tigress_ECalABSuppRing_fromsepdata.bash $RUN 4000 5000
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -339,6 +341,22 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
+#generate raw CsI spectra, for diagnostics and to aid with Doppler correction
+if [ ! -f CsIArray_ERaw_fromPIDsepdata4p0a/run"$RUN"_CsIArray_ERaw_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+echo ""
+echo "------------------------------------------"
+echo "Generating raw CsI spectra from PID separated data..."
+echo "------------------------------------------"
+echo ""
+./process_CsIArray_ERaw_fromPIDsepdata.bash $RUN
+else
+echo ""
+echo "--------------------------------------------------------"
+echo "Raw CsI spectra from PID separated data already exist, skipping..."
+echo "--------------------------------------------------------"
+echo ""
+fi
+
 if [ ! -f Tigress_ECalABSuppRingDopplerCorrected_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
@@ -353,6 +371,7 @@ echo "Calibrated TIGRESS ring suppressed addback, ring Doppler corrected spectra
 echo "--------------------------------------------------------"
 echo ""
 fi
+
 
 #if [ ! -f Tigress_ECalABSuppRingEGated_fromPIDsepdata0p3a/run"$RUN"_Tigress_ECalABSuppRingEGated_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 #echo ""
