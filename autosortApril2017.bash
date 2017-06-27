@@ -86,7 +86,7 @@ if [ $(ls -1 sfu/run"$RUN".sfu | wc -l) -lt 1 ]; then
 
 		#make list of subruns (special command needed to 
 		#avoid listing color codes alongside filenames on midtig02) 
-		for file in $(ls -f midas/run"$RUN"*); do echo $file; done > runs.list
+		for file in $(ls -f midas/run"$RUN"*.mid); do echo $file; done > runs.list
 		
 		#convert the run/subruns(s) from midas to sfu format
 		echo "Reconstructing events from run "$RUN"..."
