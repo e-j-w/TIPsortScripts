@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Script to generate separated data which is time correlated by applying a series of gates:
-# CsI-CsI time gate specified in CSIARRAY_par.dat (in ns)
-# Tigress-Tigress time gate specified in CSIARRAY_par.dat (in ns)
-# Tigress-CsI time gate (time gate in ns specified by arguments 2 and 3)
+# Script to generate separated data which is time UNcorrelated by applying a series of gates:
+# CsI-CsI time gate specified in CSIARRAY_par.dat (in ns), keeping data outside of the gate
+# Tigress-Tigress time gate specified in CSIARRAY_par.dat (in ns), keeping data outside of the gate
+# Tigress-CsI time gate (time gate in ns specified by arguments 2 and 3), keeping data outside of the gate
 # Argument 1 is the run number.
 # Arguments 2 and 3 specify the Tigress-CsI timing gate (in ns).
 
@@ -22,11 +22,9 @@ sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCalsep
 mkdir CsIArray_TTCalsep
 mkdir Tigress_TTCalsep
 mkdir TigressCsIArray_TTCalsep
-separate_CsIArray_TTCalDiff MasterFiles/master"$1"_CsIArrayTTCalsep
-separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep
-#separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 4560 4690
-separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $2 $3
-#separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 0 100
+separate_CsIArray_TTCalDiff MasterFiles/master"$1"_CsIArrayTTCalsep no
+separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep no
+separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $3 $2
 
 #move intermediate files to appropriate directories
 mv run"$1"_CsIArrayTTCalsep.sfu CsIArray_TTCalsep/run"$1"_CsIArrayTTCalsep.sfu

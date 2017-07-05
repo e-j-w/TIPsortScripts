@@ -5,7 +5,7 @@ Timing_from                                    fit_function
 -------------------------------- --------------------------------------------------------------------
 Energy_spectra_contraction_factor              1
 -------------------------------- --------------------------------------------------------------------
-Energy_calibration_parameters      ParFiles/September2016/CSIARRAY_energy.par
+Energy_calibration_parameters      ParFiles/September2016/CSIARRAY_energy_linear.par
 -------------------------------- --------------------------------------------------------------------
 Energy_limits                      ParFiles/September2016/CSIARRAY_energy_limits.par
 -------------------------------- --------------------------------------------------------------------

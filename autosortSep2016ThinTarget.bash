@@ -109,20 +109,20 @@ fi
 #generate histograms if needed
 echo ""
 echo "Generating histograms for run "$RUN"..."
-if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "-----------------------------------------------"
-echo "Generating Tigress/BGO hit pattern histogram..."
-echo "-----------------------------------------------"
-echo ""
-./process_TigressBGO_HP.bash $RUN
-else
-echo ""
-echo "-------------------------------------------------------------"
-echo "Tigress/BGO hit pattern histogram already exists, skipping..."
-echo "-------------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "-----------------------------------------------"
+#echo "Generating Tigress/BGO hit pattern histogram..."
+#echo "-----------------------------------------------"
+#echo ""
+#./process_TigressBGO_HP.bash $RUN
+#else
+#echo ""
+#echo "-------------------------------------------------------------"
+#echo "Tigress/BGO hit pattern histogram already exists, skipping..."
+#echo "-------------------------------------------------------------"
+#echo ""
+#fi
 
 if [ ! -f Tigress_TTCal/run"$RUN"_Tigress_TTCal.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
@@ -224,7 +224,10 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN 3580 3700
+#./process_TigressCsI_TTCalsepdata.bash $RUN 3630 3650
+#./process_TigressCsI_TTCalsepdata.bash $RUN 3580 3700
+#./process_TigressCsI_TTCalsepdata_uncorrelated.bash $RUN 3580 3700
+./process_TigressCsI_TTCalsepdata_centralval.bash $RUN 3580 3700 6915 10530
 else
 echo ""
 echo "--------------------------------------------------------"
