@@ -22,6 +22,7 @@ list
 *.mat
 test*
 cluster.dat
+cluster*
 cluster
 GRSIsort
 master
@@ -34,3 +35,5 @@ ParFiles/gate*.root
 ParFiles/gate*.dat
 *Trash*
 calibration
+*.txt
+*.log
