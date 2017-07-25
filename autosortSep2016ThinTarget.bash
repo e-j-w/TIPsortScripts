@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A script for automatic online sorting.
-# This version covers the September 2016 S1232 run
+# This version covers the September 2016 S1232 run thin target data
 
 #variables unique to this run
 EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 CsI BALL TEST RUN - THIN TARGET"
@@ -18,6 +18,9 @@ if [ ! -d midas ]; then
 fi
 if [ ! -d sfu ]; then
 	mkdir sfu
+fi
+if [ ! -d ParFiles ]; then
+	mkdir ParFiles
 fi
 
 #copy the proper parameter files
@@ -314,20 +317,20 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
-if [ ! -f Tigress_ECalABRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "------------------------------------------"
-echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."
-echo "------------------------------------------"
-echo ""
-./process_Tigress_ECalABRing_fromPIDsepdata.bash $RUN 4000 5000
-else
-echo ""
-echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring addback spectra from PID separated data already exist, skipping..."
-echo "--------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f Tigress_ECalABRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABRing_fromPIDsepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated TIGRESS ring addback spectra from PID separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
 
 
 if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
@@ -415,6 +418,12 @@ fi
 #echo "------------------------------------------------------"
 #echo ""
 #check_Fold2D sfu/run"$RUN".sfu 1 3
+
+#clean up
+rm ParFiles/CSIARRAY_par.dat
+rm ParFiles/TIGRESS_par.dat
+rm ParFiles/"$GATE_FILENAME"
+rm ParFiles/"$GATE_NAME_FILENAME"
 
 echo ""
 echo "--------------------------------------------------------"

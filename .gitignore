@@ -37,3 +37,6 @@ ParFiles/gate*.dat
 calibration
 *.txt
 *.log
+*.sin
+*.sto
+*.ps

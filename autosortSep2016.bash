@@ -6,10 +6,11 @@
 #variables unique to this run
 EXPERIMENT_TITLE="SEPTEMBER 2016 S1232 TIP TARGET TEST RUN"
 SCP_LOC="tigress@midtig06.triumf.ca:/data2/tigress/TipTest/"
-PARFILE_LOC="ParFiles/December2016/"
+PARFILE_LOC="ParFiles/September2016/"
 MAP="maps/September2016.map"
 GATE_FILENAME="gates_September2016.root"
 GATE_NAME_FILENAME="gateNames_September2016.dat"
+RING_DS_FILENAME="ring_ds.dat"
 
 #set stuff up
 if [ ! -d midas ]; then
@@ -111,20 +112,20 @@ fi
 #generate histograms if needed
 echo ""
 echo "Generating histograms for run "$RUN"..."
-if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
-echo ""
-echo "-----------------------------------------------"
-echo "Generating Tigress/BGO hit pattern histogram..."
-echo "-----------------------------------------------"
-echo ""
-./process_TigressBGO_HP.bash $RUN
-else
-echo ""
-echo "-------------------------------------------------------------"
-echo "Tigress/BGO hit pattern histogram already exists, skipping..."
-echo "-------------------------------------------------------------"
-echo ""
-fi
+#if [ ! -f TigressBGO_TTHP/run"$RUN"_TigressBGO_TTHP.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "-----------------------------------------------"
+#echo "Generating Tigress/BGO hit pattern histogram..."
+#echo "-----------------------------------------------"
+#echo ""
+#./process_TigressBGO_HP.bash $RUN
+#else
+#echo ""
+#echo "-------------------------------------------------------------"
+#echo "Tigress/BGO hit pattern histogram already exists, skipping..."
+#echo "-------------------------------------------------------------"
+#echo ""
+#fi
 
 if [ ! -f Tigress_TTCal/run"$RUN"_Tigress_TTCal.root ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
@@ -212,11 +213,10 @@ echo ""
 else
 echo ""
 echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring suppressedaddback spectra already exist, skipping..."
+echo "Calibrated TIGRESS ring suppressed addback spectra already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
-
 
 if [ ! -f TigressCsIArray_TTCalsep/run"$RUN"_TigressCsIArrayTTCalsep.sfu ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
@@ -224,7 +224,7 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN 3580 3700
+./process_TigressCsI_TTCalsepdata.bash $RUN 3560 3700
 else
 echo ""
 echo "--------------------------------------------------------"
@@ -282,14 +282,14 @@ fi
 if [ ! -f Tigress_ECalABRing_fromsepdata/run"$RUN"_Tigress_ECalABRing_fromsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""
 echo "------------------------------------------"
-echo "Generating calibrated TIGRESS ring addback spectra from separated data..."
+echo "Generating calibrated TIGRESS ring supressed addback spectra from separated data..."
 echo "------------------------------------------"
 echo ""
-./process_Tigress_ECalABRing_fromsepdata.bash $RUN
+./process_Tigress_ECalABSuppRing_fromsepdata.bash $RUN 4000 5000
 else
 echo ""
 echo "--------------------------------------------------------"
-echo "Calibrated TIGRESS ring addback spectra from separated data already exist, skipping..."
+echo "Calibrated TIGRESS ring supressed addback spectra from separated data already exist, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
@@ -309,6 +309,22 @@ echo "PID separated data already exists, skipping..."
 echo "--------------------------------------------------------"
 echo ""
 fi
+
+#if [ ! -f Tigress_ECalABRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
+#echo ""
+#echo "------------------------------------------"
+#echo "Generating calibrated TIGRESS ring addback spectra from PID separated data..."
+#echo "------------------------------------------"
+#echo ""
+#./process_Tigress_ECalABRing_fromPIDsepdata.bash $RUN 4000 5000
+#else
+#echo ""
+#echo "--------------------------------------------------------"
+#echo "Calibrated TIGRESS ring addback spectra from PID separated data already exist, skipping..."
+#echo "--------------------------------------------------------"
+#echo ""
+#fi
+
 
 if [ ! -f Tigress_ECalABSuppRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 echo ""

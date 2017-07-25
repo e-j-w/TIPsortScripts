@@ -22,8 +22,8 @@ sed -i 's/26563/'"$1"'/g'  MasterFiles/master"$1"_TigressCsIArrayTTCalsep
 mkdir CsIArray_TTCalsep
 mkdir Tigress_TTCalsep
 mkdir TigressCsIArray_TTCalsep
-separate_CsIArray_TTCalDiff MasterFiles/master"$1"_CsIArrayTTCalsep
-separate_Tigress_TTCalDiff MasterFiles/master"$1"_TigressTTCalsep
+separate_CsIArray_TTCalDiffFirstHit MasterFiles/master"$1"_CsIArrayTTCalsep
+separate_Tigress_TTCalDiffFirstHit MasterFiles/master"$1"_TigressTTCalsep
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 4560 4690
 separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $2 $3
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 0 100
