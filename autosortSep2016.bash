@@ -224,7 +224,15 @@ echo "------------------------------------------"
 echo "Generating separated Tigress-CsI time correlated data..."
 echo "------------------------------------------"
 echo ""
-./process_TigressCsI_TTCalsepdata.bash $RUN 3560 3700
+#Tigress/CsI timing changes based on run number for the thick target run
+if [ $RUN -gt 39550 ]
+then
+	echo "Using late run Tigress-CsI timing window..."
+	./process_TigressCsI_TTCalsepdata.bash $RUN 3560 3700
+else
+	echo "Using early run Tigress-CsI timing window..."
+	./process_TigressCsI_TTCalsepdata.bash $RUN 4560 4690
+fi
 else
 echo ""
 echo "--------------------------------------------------------"
