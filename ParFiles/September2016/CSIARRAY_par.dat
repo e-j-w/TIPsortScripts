@@ -28,4 +28,5 @@ DeltaU_file		   	  ParFiles/September2016/deltaU.par
 Ring_map			  ParFiles/September2016/CSIARRAY_ring_map.par
 -------------------------------- --------------------------------------------------------------------
 CSIARRAY_TTCal_gate_length                     200
+#CSIARRAY_TTCal_gate_length                     260
 

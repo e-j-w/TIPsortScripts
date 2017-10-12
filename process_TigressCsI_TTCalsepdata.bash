@@ -25,7 +25,8 @@ mkdir TigressCsIArray_TTCalsep
 separate_CsIArray_TTCalDiffFirstHit MasterFiles/master"$1"_CsIArrayTTCalsep
 separate_Tigress_TTCalDiffFirstHit MasterFiles/master"$1"_TigressTTCalsep
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 4560 4690
-separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $2 $3
+#separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $2 $3
+separate_TigressCsIArray_TTCalAnyHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep $2 $3
 #separate_TigressCsIArray_TTCalFirstHitDiff MasterFiles/master"$1"_TigressCsIArrayTTCalsep 0 100
 
 #move intermediate files to appropriate directories

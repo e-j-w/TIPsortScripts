@@ -1,3 +1,4 @@
+octave-workspace
 unused
 *.root
 *.mid
@@ -6,6 +7,7 @@ unused
 *.spn
 *.spe
 *.mca
+*.fmca
 *.pdf
 *.ods
 *.sou
