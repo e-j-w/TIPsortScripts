@@ -318,6 +318,9 @@ echo "--------------------------------------------------------"
 echo ""
 fi
 
+#DROP RING 0 (JUST A TEST!)
+#separate_CsIPos CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu CsIArray_PID_ERsep2p0a/run"$RUN"_PID_ERsep.sfu 5 100
+
 #if [ ! -f Tigress_ECalABRing_fromPIDsepdata1p2a/run"$RUN"_Tigress_ECalABSuppRing_fromPIDsepdata.mca ] || [ "$1" == "ow" ] || [ "$1" == "justfuckmyshitup" ]; then
 #echo ""
 #echo "------------------------------------------"

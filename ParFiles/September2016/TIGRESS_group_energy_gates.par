@@ -1,0 +1,8 @@
+This is a group gate file for TIGRESS cores.
+group  low     high   
+ 1    2588     2641           
+ 2    2587     2624
+ 3    2534     2575
+ 4    2517     2559
+ 5    2478     2531
+ 6    2457     2509

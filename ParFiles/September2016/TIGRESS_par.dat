@@ -21,9 +21,13 @@ Ring_map                           ParFiles/September2016/TIGRESS_ring_map.par
 -------------------------------- --------------------------------------------------------------------
 Ring_energy_gates                  ParFiles/September2016/TIGRESS_ring_energy_gates.par
 -------------------------------- --------------------------------------------------------------------
+Group_energy_gates                  ParFiles/September2016/TIGRESS_group_energy_gates.par
+-------------------------------- --------------------------------------------------------------------
 Core_time_limits                   ParFiles/September2016/TIGRESS_core_time_limits.par
 -------------------------------- --------------------------------------------------------------------
 Core_energy_limits                 ParFiles/September2016/TIGRESS_core_energy_limits.par
+-------------------------------- --------------------------------------------------------------------
+Group_map                           ParFiles/September2016/Doppler_shift_group_map.par
 -------------------------------- --------------------------------------------------------------------
 RFUnwrapping_option                            no
 -------------------------------- --------------------------------------------------------------------
