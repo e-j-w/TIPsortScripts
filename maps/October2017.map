@@ -1,17 +1,10 @@
 =======    ==========================================
-<<<<<<< HEAD
 TDAQMAP    OCTOBER2017_CSI_BALL_TEST
 ======     ==========================================
 TIMESTAMP_ORDER   NO
 =============== ===================================
 RF         PARAMETERS
 CHANNEL    1020
-=======
-TDAQMAP    September2016 TIP/TIGRESSDAQ TEST		
-======     ==========================================
-RF         PARAMETERS
-CHANNEL    1060
->>>>>>> 94ed549d4ece4f95c9e6799becb1d785e3a38480
 PERIOD     8.48409
 =======    ==========================================
 TIGRESS    CHANNEL
